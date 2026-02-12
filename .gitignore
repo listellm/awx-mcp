@@ -143,6 +143,10 @@ cython_debug/
 .DS_Store
 Thumbs.db
 
+# Node.js
+node_modules/
+package-lock.json
+
 # Project specific
 logs/
 *.log
