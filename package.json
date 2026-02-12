@@ -1,0 +1,20 @@
+{
+  "name": "awx-mcp",
+  "private": true,
+  "scripts": {
+    "ci:release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.0",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "semantic-release": "^24.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/listellm/awx-mcp.git"
+  }
+}
