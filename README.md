@@ -47,7 +47,23 @@ This is a **local developer tool** that runs in Docker via stdio transport.
 - Docker installed and running
 - AWX credentials (URL, username, password)
 
-### Build
+### Using Published Image
+
+Pull the latest release from GitHub Container Registry:
+
+```bash
+docker pull ghcr.io/listellm/awx-mcp:latest
+```
+
+Or use a specific version:
+
+```bash
+docker pull ghcr.io/listellm/awx-mcp:v1.0.1
+```
+
+### Build from Source
+
+Alternatively, build locally:
 
 ```bash
 docker build -t awx-mcp-server:latest .
@@ -67,12 +83,14 @@ Add to `.vscode/mcp.json` in your project:
         "-e", "AWX_URL",
         "-e", "AWX_USERNAME",
         "-e", "AWX_PASSWORD",
-        "awx-mcp-server:latest"
+        "ghcr.io/listellm/awx-mcp:latest"
       ]
     }
   }
 }
 ```
+
+> **Note**: Replace `ghcr.io/listellm/awx-mcp:latest` with `awx-mcp-server:latest` if you built from source.
 
 Set the environment variables in your shell before launching Claude Code, or use `--env-file`:
 
@@ -84,7 +102,7 @@ Set the environment variables in your shell before launching Claude Code, or use
       "args": [
         "run", "-i", "--rm",
         "--env-file", "/path/to/.env",
-        "awx-mcp-server:latest"
+        "ghcr.io/listellm/awx-mcp:latest"
       ]
     }
   }
@@ -179,7 +197,7 @@ echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
     -e AWX_URL=https://awx.example.com \
     -e AWX_USERNAME=test \
     -e AWX_PASSWORD=test \
-    awx-mcp-server:latest
+    ghcr.io/listellm/awx-mcp:latest
 ```
 
 Expected response:
@@ -191,7 +209,7 @@ Expected response:
 ### Interactive testing
 
 ```bash
-docker run -i --rm --env-file .env awx-mcp-server:latest
+docker run -i --rm --env-file .env ghcr.io/listellm/awx-mcp:latest
 ```
 
 Then send JSON-RPC requests line by line:
@@ -258,9 +276,24 @@ Press `Ctrl+D` to exit.
 - [AWX Project](https://github.com/ansible/awx)
 - [Claude Code](https://claude.ai/code)
 
-## Version History
+## Installation
 
-- **0.1.0**: Initial implementation
-  - 7 core tools (status, logs, inventories, hosts, templates, jobs)
-  - Docker-based deployment
-  - stdio MCP protocol integration
+### Docker Image
+
+Published releases are available on GitHub Container Registry:
+
+```bash
+docker pull ghcr.io/listellm/awx-mcp:latest    # Latest stable
+docker pull ghcr.io/listellm/awx-mcp:v1        # Latest v1.x
+docker pull ghcr.io/listellm/awx-mcp:v1.0      # Latest v1.0.x
+docker pull ghcr.io/listellm/awx-mcp:v1.0.1    # Specific version
+```
+
+Images are automatically built and published on every release via GitHub Actions.
+
+## Releases
+
+See [GitHub Releases](https://github.com/listellm/awx-mcp/releases) for the full changelog and release notes.
+
+- **v1.0.x**: Production-ready with automated releases
+- **v0.1.0**: Initial implementation
