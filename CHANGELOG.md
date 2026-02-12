@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-02-12
+
+### Changed
+
+- 🎉 Stable v1.0.0 release - production-ready MCP server
+- ✨ Automated releases via semantic-release
+- 📦 Public Docker images on GitHub Container Registry
+- 🔐 GitHub App authentication for CI/CD
+- 📋 Community documentation (Code of Conduct, Contributing, Security)
+
 ## [0.1.0] - 2026-02-12
 
 ### Added
